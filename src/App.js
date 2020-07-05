@@ -3,10 +3,12 @@ import logo from './logo.svg';
 import './App.scss';
 
 import axios from 'axios'
+import queryString from 'query-string'
 
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
+import Pagination from './components/Pagination';
 // import ColorBox from './components/ColorBox';
 
 function App() {
@@ -17,21 +19,41 @@ function App() {
   ])
 
   const [posts, setPosts] = useState([]);
+  const [pagination, setPagination] = useState({
+    _page: 1,
+    _limit: 10,
+    _totalRows: 1
+  })
+  const [filters, setFilter] = useState({
+    _limit: 10,
+    _page: 1,
+  })
+
+
+  function handlePageChange(newPage) {
+    setFilter({
+      ...filters,
+      _page: newPage
+    })
+  }
 
   useEffect(() => {
     async function getPosts() {
       try {
-        const url = 'http://js-post-api.herokuapp.com/api/posts?_limit=10&_page=1';
+        const paramString = queryString.stringify(filters)
+        const url = `http://js-post-api.herokuapp.com/api/posts?${paramString}`;
         const respone = await axios.get(url)
         const resData = { ...respone.data };
-        const data = [...resData.data]
+        const { data, pagination } = { ...resData }
         setPosts(data);
+        setPagination(pagination);
+
       } catch (error) {
         console.log("Fail tp get posts api: ", error)
       }
     }
     getPosts();
-  }, [])
+  }, [filters])
 
 
   function handleTodoClick(todo) {
@@ -57,6 +79,7 @@ function App() {
       {/* <TodoForm onSubmit={handleFormSubmit} />
       <TodoList todos={todos} onTodoClick={handleTodoClick} /> */}
       <PostList posts={posts} />
+      <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
   );
 }
