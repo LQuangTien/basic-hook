@@ -10,6 +10,7 @@ import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import PostFilterForm from './components/PostFilterForm';
+import CLock from './components/Clock';
 // import ColorBox from './components/ColorBox';
 
 function App() {
@@ -85,10 +86,11 @@ function App() {
   return (
     <div className="App">
       {/* <TodoForm onSubmit={handleFormSubmit} />
-      <TodoList todos={todos} onTodoClick={handleTodoClick} /> */}
+      <TodoList todos={todos} onTodoClick={handleTodoClick} />
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
-      <Pagination pagination={pagination} onPageChange={handlePageChange} />
+      <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
+      < CLock />
     </div>
   );
 }
