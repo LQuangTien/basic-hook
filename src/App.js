@@ -10,7 +10,8 @@ import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import PostFilterForm from './components/PostFilterForm';
-import CLock from './components/Clock';
+import Clock from './components/Clock';
+import BetterClock from './components/BetterClock';
 // import ColorBox from './components/ColorBox';
 
 function App() {
@@ -90,7 +91,8 @@ function App() {
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
-      < CLock />
+      < Clock />
+      <BetterClock />
     </div>
   );
 }
