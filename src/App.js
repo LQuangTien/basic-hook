@@ -9,6 +9,7 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import PostList from './components/PostList';
 import Pagination from './components/Pagination';
+import PostFilterForm from './components/PostFilterForm';
 // import ColorBox from './components/ColorBox';
 
 function App() {
@@ -29,6 +30,13 @@ function App() {
     _page: 1,
   })
 
+  function handleFilterChange(filterValue) {
+    setFilter({
+      ...filters,
+      _page: 1,
+      title_like: filterValue.searchTerm
+    })
+  }
 
   function handlePageChange(newPage) {
     setFilter({
@@ -78,6 +86,7 @@ function App() {
     <div className="App">
       {/* <TodoForm onSubmit={handleFormSubmit} />
       <TodoList todos={todos} onTodoClick={handleTodoClick} /> */}
+      <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>
