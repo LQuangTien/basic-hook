@@ -12,6 +12,7 @@ import Pagination from './components/Pagination';
 import PostFilterForm from './components/PostFilterForm';
 import Clock from './components/Clock';
 import BetterClock from './components/BetterClock';
+import MagicBox from './components/MagicBox';
 // import ColorBox from './components/ColorBox';
 
 function App() {
@@ -90,9 +91,10 @@ function App() {
       <TodoList todos={todos} onTodoClick={handleTodoClick} />
       <PostFilterForm onSubmit={handleFilterChange} />
       <PostList posts={posts} />
-      <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
+      <Pagination pagination={pagination} onPageChange={handlePageChange} />
       < Clock />
-      <BetterClock />
+      <BetterClock /> */}
+      <MagicBox />
     </div>
   );
 }
